@@ -17,6 +17,7 @@
 <div class="blogpost-meta">
 	@Html.Partial("_hook_blogPostMetaTop", Model)
 	<span>@Model.Date.Display</span>
+	<span> by @Model.Author</span>
 	@if(disqusSettings.CurrentValue.IsEnabled) {
 		<span class="separator">/</span>
 		<a href="@postURL#disqus_thread">Comments</a>

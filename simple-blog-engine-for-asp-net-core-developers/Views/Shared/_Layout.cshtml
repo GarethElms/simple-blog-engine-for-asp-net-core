@@ -2,6 +2,7 @@
 @inject Microsoft.Extensions.Options.IOptionsMonitor<BlogPostsSettings> blogPostConfigMonitor
 @inject Microsoft.Extensions.Options.IOptionsMonitor<GoogleAnalyticsSettings> googleAnalyticsSettings
 @inject Microsoft.Extensions.Options.IOptionsMonitor<SiteSettings> siteSettings
+
 ViewBag.Title = siteSettings.CurrentValue.MetaData.PageTitlePrefix + ViewData["Title"] + siteSettings.CurrentValue.MetaData.PageTitleSuffix;
 }<!DOCTYPE html>
 <html>

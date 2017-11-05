@@ -13,5 +13,5 @@ nav.navbar {background-color:#252d40 !important;}
 footer {background-color:#252d40 !important;}
 body footer a {color:#ddd;}
 body footer a:hover {color:#fff;}
-
 body a {color:#252d40;}
+.main-body img {display:inline-block; margin:5px 0 15px; -webkit-box-shadow:0 28px 16px -26px rgba(0, 0, 0, 1); -moz-box-shadow:0 28px 16px -26px rgba(0, 0, 0, 1); box-shadow:0 28px 16px -26px rgba(0, 0, 0, 1);}
