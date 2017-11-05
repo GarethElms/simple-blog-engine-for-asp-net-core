@@ -1,0 +1,8 @@
+﻿@inject Microsoft.Extensions.Options.IOptionsMonitor<SiteSettings> siteSettings
+<meta property="og:type" content="website" />
+<meta property="og:title" content="@ViewBag.Title" />
+<meta property="og:description" content="@ViewData["description"]" />
+<meta property="og:url" content="@Context.Request.Host@Context.Request.Path@Context.Request.QueryString" />
+<meta property="og:site_name" content="@siteSettings.CurrentValue.SiteName" />
+<meta property="og:image" content="/themes/@siteSettings.CurrentValue.Theme.ThemeName/@siteSettings.CurrentValue.Theme.ShareImage" />
+<meta property="og:locale" content="@siteSettings.CurrentValue.MetaData.Locale" />

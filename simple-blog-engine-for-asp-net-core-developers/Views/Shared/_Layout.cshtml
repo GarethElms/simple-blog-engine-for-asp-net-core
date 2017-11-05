@@ -1,0 +1,70 @@
+﻿@{
+@inject Microsoft.Extensions.Options.IOptionsMonitor<BlogPostsSettings> blogPostConfigMonitor
+@inject Microsoft.Extensions.Options.IOptionsMonitor<GoogleAnalyticsSettings> googleAnalyticsSettings
+@inject Microsoft.Extensions.Options.IOptionsMonitor<SiteSettings> siteSettings
+ViewBag.Title = siteSettings.CurrentValue.MetaData.PageTitlePrefix + ViewData["Title"] + siteSettings.CurrentValue.MetaData.PageTitleSuffix;
+}<!DOCTYPE html>
+<html>
+<head>
+	@Html.Partial("_hook_headTop")
+	@Html.Partial("_googleAnalytics", googleAnalyticsSettings.CurrentValue)
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="author" content="@siteSettings.CurrentValue.Owner">
+	<meta name="description" content="@ViewData["description"]" />
+	<title>@ViewBag.Title</title>
+	@Html.Partial("_css")
+	@Html.Partial("_openGraphMetaTags")
+	@RenderSection("Head", required:false)
+	@Html.Partial("_hook_headBottom")
+</head>
+<body class="page-@ViewBag.PageId">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+		<div class="container">
+			<a class="navbar-brand alternate-background-link" href="/">@siteSettings.CurrentValue.SiteName</a>
+			<div class="custom-nav">
+				@Html.Partial("_navBar")
+			</div>
+		</div>
+	</nav>
+	<div class="container">
+		<div class="row header-row-container">
+			<div class="col-xs-12 header-row">
+				@Html.Partial("_hook_headerTop")
+				@{if(!string.IsNullOrEmpty(siteSettings.CurrentValue.Theme.HeaderImage)) {
+					<a href="/">
+						<img src="/themes/@siteSettings.CurrentValue.Theme.ThemeName/@siteSettings.CurrentValue.Theme.HeaderImage" class="img-fluid" />
+					</a>
+				}}
+				@Html.Partial("_hook_headerBottom")
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12 col-lg-8 col-xl-9 main-body">
+				@Html.Partial("_hook_bodyTop")
+				@RenderBody()
+				@Html.Partial("_hook_bodyBottom")
+			</div>
+			<div class="col-xs-12 col-lg-4 col-xl-3 sidebar">
+				<div class="hidden-md-down sidebar-spacer"></div>
+				@Html.Partial("_hook_sideBarTop")
+				@Html.Partial("_allTagsList", blogPostConfigMonitor.CurrentValue.Meta.Tags)
+				@Html.Partial("_recentPosts", blogPostConfigMonitor.CurrentValue)
+				@Html.Partial("_hook_sideBarBottom")
+			</div>
+		</div>
+	</div>
+	<footer class="bg-dark">
+		<div class="container">
+			@Html.Partial("_hook_footerTop")
+			@Html.Partial("_footer")
+			@Html.Partial("_hook_footerBottom")
+		</div>
+	</footer>
+
+	@Html.Partial("_scriptsMain")
+	@Html.Partial("_hook_scriptsCustom")
+	@RenderSection("Scripts", required: false)
+	@Html.Partial("_syntaxHighlighting")
+</body>
+</html>

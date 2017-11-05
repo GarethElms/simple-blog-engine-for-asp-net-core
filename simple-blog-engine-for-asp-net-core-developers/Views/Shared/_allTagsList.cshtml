@@ -1,0 +1,7 @@
+﻿@model List<BlogPostTag>
+<div class="tags-list">
+	<h3>Tags</h3>
+	@foreach(var tag in Model) {
+		<p><a href="/category/@tag.Tag_URLFriendly">@tag.Tag (@tag.Count)</a></p>
+	}
+</div>

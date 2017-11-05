@@ -1,0 +1,19 @@
+﻿@model BlogPostsViewModel
+
+
+@{if(Model.BlogPostsConfig.Meta.TotalPages > 1) {
+<ul class="pagination justify-content-center mb-4">
+	@for(int pageNumber=1, pageCount= Model.BlogPostsConfig.Meta.TotalPages; pageNumber<=pageCount; pageNumber++) {
+	
+		@if(pageNumber == Model.CurrentPageNumber){
+			<li class="page-item active">
+				<span class="page-link">@pageNumber</span>
+			</li>
+		} else {
+			<li class="page-item">
+				<a class="page-link" href="/page/@pageNumber">@pageNumber</a>
+			</li>
+		}
+	}
+</ul>
+}}

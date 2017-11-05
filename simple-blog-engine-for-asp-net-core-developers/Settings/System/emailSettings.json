@@ -1,0 +1,14 @@
+﻿{
+  "EmailSettings": {
+    "PrimaryDomain": "",
+    "PrimaryPort": "0",
+    "SecondayDomain": "",
+    "SecondaryPort": "0",
+    "UsernameEmail": "",
+    "UsernamePassword": "",
+    "FromEmail": "",
+    "ToEmail": "",
+    "CcEmail": "",
+	 "Subject":  "Contact From Site"
+  }
+}

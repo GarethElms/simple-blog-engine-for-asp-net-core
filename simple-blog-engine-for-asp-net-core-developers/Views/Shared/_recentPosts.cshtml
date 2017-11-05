@@ -1,0 +1,13 @@
+﻿@model BlogPostsSettings
+@inject Microsoft.Extensions.Options.IOptionsMonitor<BlogPostsSettings> blogPostConfigMonitor
+@{if(blogPostConfigMonitor.CurrentValue.NumberOfRecentBlogPostsToShowInSidebar > 0) {
+<div class="recent-posts">
+	<h3>Recent Posts</h3>
+	@for(int i=0, count=Math.Min(blogPostConfigMonitor.CurrentValue.NumberOfRecentBlogPostsToShowInSidebar, Model.Blogs.Count); i<count; i++) {
+		var blogPost = Model.Blogs[i];
+		var postURL = "//" + Context.Request.Host + Url.Action("ViewBlogPost","Blog",new { year = blogPost.Date.Year,Month = blogPost.Date.Month.ToString("00"),Slug = blogPost.Slug });
+		<div class="blog-post-list-item"><a href="@postURL">@blogPost.Title</a></div>
+	}
+	<div class="blog-post-list-item link-right"><a href="/blog/all">All blog posts...</a></div>
+</div>
+}}

@@ -1,0 +1,11 @@
+﻿@inject Microsoft.Extensions.Options.IOptionsMonitor<SiteSettings> siteSettings
+
+@{if(!string.IsNullOrEmpty(siteSettings.CurrentValue.MetaData.TwitterUserName)) {
+<p class="m-0 text-center">
+	<a title="@siteSettings.CurrentValue.Owner on Twitter" target="_blank" href="https://twitter.com/@siteSettings.CurrentValue.MetaData.TwitterUserName">@@@siteSettings.CurrentValue.MetaData.TwitterUserName</a>
+</p>
+}}
+@Html.Partial("_hook_footerMiddle")
+<p class="m-0 text-center">
+	<span>Copyright &copy; @siteSettings.CurrentValue.Owner @DateTime.Now.Year</span>
+</p>

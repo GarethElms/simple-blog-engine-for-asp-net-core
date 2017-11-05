@@ -1,0 +1,75 @@
+﻿@model BlogPost
+@using SimpleBlogEngine.Extensions
+@inject Microsoft.Extensions.Options.IOptionsMonitor<DisqusSettings> disqusSettings
+@inject Microsoft.Extensions.Options.IOptionsMonitor<AddThisSettings> addThisSettings
+@{
+	ViewData["Title"] = Model.Title;
+	var postURL = "//" + Context.Request.Host + Url.Action("ViewBlogPost","Blog",new { year = Model.Date.Year,Month = Model.Date.Month.ToString("00"),Slug = Model.Slug});
+	ViewBag.PageId = "blog-post";
+}
+
+@Html.Partial("_hook_blogPostBefore", Model)
+
+<h2 class="my-4">
+	<a href="@postURL">@Model.Title</a>
+</h2>
+
+<div class="blogpost-meta">
+	@Html.Partial("_hook_blogPostMetaTop", Model)
+	<span>@Model.Date.Display</span>
+	@if(disqusSettings.CurrentValue.IsEnabled) {
+		<span class="separator">/</span>
+		<a href="@postURL#disqus_thread">Comments</a>
+	}
+	@Html.Partial("_hook_blogPostMetaBottom", Model)
+</div>
+
+<hr />
+
+@Html.Partial("_hook_blogPostBeforeBlogContent", Model)
+
+@Html.Partial("~/Views/_blogSource/" + Model.View, Model)
+
+@Html.Partial("_hook_blogPostAfterBlogContent", Model)
+
+<p class="blogpost-tags">
+	@{
+		var tagCount = Model.Tags.Count;
+		if(tagCount == 1) {
+			var tag = Model.Tags[0];
+			<i class="fa fa-tag" aria-hidden="true"></i>
+			<a href="/category/@tag">@tag</a>
+		} else if(tagCount > 1) {
+			<i class="fa fa-tags" aria-hidden="true"></i>
+			for(int i=0; i<tagCount; i++) {
+				var tag = Model.Tags[i];
+				<a href="/category/@tag.MakeURLFriendly()">@tag</a>if(i<tagCount-1) {<text>, </text>}
+			}
+		}
+	}
+</p>
+
+@Html.Partial("_hook_blogPostBeforeShareButtons", Model)
+@Html.Partial("_shareButtons", addThisSettings.CurrentValue)
+
+@if(ViewBag.DontShowAddThis == null) {
+	<div class="addthis_inline_share_toolbox"></div>
+}
+
+@Html.Partial("_hook_blogPostBeforeComments", Model)
+
+@if(ViewBag.DontShowComments == null) { // The blog listing pages show blog posts without comments
+	@Html.Partial("/Views/Shared/_comments.cshtml", disqusSettings.CurrentValue)
+} else if(disqusSettings.CurrentValue.IsEnabled) {
+	<div>
+		<a href="@postURL#disqus_thread">Comments</a>
+	</div>
+}
+
+@Html.Partial("_hook_blogPostAfterComments", Model)
+
+@Html.Partial("_hook_blogPostAfter", Model)
+
+@section Scripts {
+	@Html.Partial("_comments", disqusSettings.CurrentValue)
+}

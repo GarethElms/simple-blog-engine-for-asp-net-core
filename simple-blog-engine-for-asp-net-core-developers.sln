@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.15
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "simple-blog-engine-for-asp-net-core-developers", "simple-blog-engine-for-asp-net-core-developers\simple-blog-engine-for-asp-net-core-developers.csproj", "{D610FEA7-9F80-4110-A727-8FF27589400F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D610FEA7-9F80-4110-A727-8FF27589400F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D610FEA7-9F80-4110-A727-8FF27589400F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D610FEA7-9F80-4110-A727-8FF27589400F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D610FEA7-9F80-4110-A727-8FF27589400F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {127FCF14-350C-4E59-85F3-214A1AAADA6C}
+	EndGlobalSection
+EndGlobal

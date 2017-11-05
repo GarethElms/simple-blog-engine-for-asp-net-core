@@ -1,0 +1,23 @@
+﻿@model BlogPostsViewModel
+@inject Microsoft.Extensions.Options.IOptionsMonitor<SiteSettings> siteSettings
+@{
+	ViewData["Title"] = "Blogs posts in category " + Model.Category + " - Page " + Model.CurrentPageNumber;
+	ViewData["Description"] = "Blogs posts in category " + Model.Category + " - Page " + Model.CurrentPageNumber;
+	ViewBag.DontShowComments = true;
+	ViewBag.DontShowAddThis = true;
+	ViewBag.PageId = "category";
+}
+
+@{if(Model.PageOfBlogPosts != null && Model.PageOfBlogPosts.Count > 0) {
+	foreach(var blogPost in Model.PageOfBlogPosts) {
+	<div style="margin-bottom:40px;">
+		@Html.Partial("~/Views/Blog/ViewBlogPost.cshtml", blogPost)
+		<hr />
+	</div>
+	}
+} else {
+	<p></p>
+}}
+
+@section Scripts {
+}

@@ -1,0 +1,17 @@
+﻿div.custom-nav a {color:#ddd;}
+div.blogpost-meta {color:#555;}
+.blogpost-tags i {color:#444;}
+blockquote {background:transparent url(/img/quote.png) no-repeat top left;}
+.alternate-background-link {color:#ddd;}
+.alternate-background-link:hover {color:#fff;}
+.blog-post-list-item {}
+.view-hook {border:2px dashed red; background-color:yellow;}
+.page-contact #message-success {color:green;}
+.page-contact #message-error {color:red;}
+footer .container span {color:#888;}
+nav.navbar {background-color:#252d40 !important;}
+footer {background-color:#252d40 !important;}
+body footer a {color:#ddd;}
+body footer a:hover {color:#fff;}
+
+body a {color:#252d40;}

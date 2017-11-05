@@ -1,0 +1,11 @@
+﻿@model BlogPostsSettings
+@inject Microsoft.Extensions.Options.IOptionsMonitor<SiteSettings> siteSettings
+@{
+	ViewData["Title"] = "About " + siteSettings.CurrentValue.Owner;
+	ViewData["Description"] = "About " + siteSettings.CurrentValue.Owner;
+	ViewBag.PageId = "about";
+}
+<h2>About Me</h2>
+<div class="main">
+	<p>Ut sit amet ornare nunc, quis aliquet nunc. Sed pretium vitae nibh in venenatis. Aenean vitae fermentum diam, ut placerat est. Integer finibus mollis erat, a pulvinar nulla commodo non. Fusce luctus laoreet aliquam. Proin ex metus, tristique sit amet aliquet condimentum, tempor at nisi. Proin eget diam libero. Cras ut dui neque. Nullam rutrum neque eu eleifend fringilla. Nullam ullamcorper massa leo, non euismod libero accumsan interdum. Curabitur ut hendrerit augue.</p>
+</div>

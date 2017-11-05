@@ -1,0 +1,72 @@
+﻿@inject Microsoft.Extensions.Options.IOptionsMonitor<SiteSettings> siteSettings
+@inject Microsoft.Extensions.Options.IOptionsMonitor<GoogleRecaptchaSettings> googleRecaptchaSettings
+@inject Microsoft.Extensions.Options.IOptionsMonitor<EmailSettings> emailSettings
+@{
+	ViewData["Title"] = "Contact " + siteSettings.CurrentValue.Owner;
+	ViewData["Description"] = "Contact " + siteSettings.CurrentValue.Owner;
+	ViewBag.PageId = "contact";
+}
+
+	@Html.Partial("_contactHeader")
+
+	<form id="contact-form" action="/Contact/SendEmail" method="POST">
+		<div class="form-group">
+			<label for="fromEmail">Email</label>
+			<input type="email" class="form-control" id="fromEmail" name="fromEmail" placeholder="Your email address">
+			@*<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>*@
+		</div>
+		<div class="form-group">
+			<label for="fromName">Name</label>
+			<input type="text" class="form-control" id="fromName" name="fromName" placeholder="Your name">
+		</div>
+		<div class="form-group">
+			<label for="message">Message</label>
+			<textarea class="form-control" id="message" name="message" placeholder="Your message"></textarea>
+		</div>
+		@{if(googleRecaptchaSettings.CurrentValue.IsEnabled) {
+		<div class="g-recaptcha" data-sitekey="@googleRecaptchaSettings.CurrentValue.SiteKey"></div>
+		}}
+		<div class="button-area">
+			<button type="submit" class="btn btn-primary">Submit</button>
+			<span id="message-success" style="display:none;">Your message was sent. Thanks.</span>
+			<span id="message-error" style="display:none;">Oops there was a problem. Please ping me on <a href="https://www.twitter.com/@siteSettings.CurrentValue.MetaData.TwitterUserName">Twitter</a> instead.</span>
+		</div>
+		<input type="hidden" name="isAJAX" id="isAJAX" value="false" />
+	</form>
+
+@section Head {
+	<script src='https://www.google.com/recaptcha/api.js'></script>
+}
+
+@section Scripts {
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script>
+		$(document).ready(function () {
+			@{
+			if(ViewBag.Success == "true") {
+				<text>$("#message-success").fadeIn(200);</text>
+			} else if(ViewBag.Success == "false") {
+				<text>$("#message-error").fadeIn(200);</text>
+			}}
+			$("#contact-form").submit(function (e) {
+				$("#isAJAX").val("true");
+				e.preventDefault();
+				var data = $(this).serialize();
+				$.ajax({
+					type: "POST",
+					url: "/Contact/SendEmail",
+					data: data,
+					dataType: "json",
+					success: function (data) {
+						$("#message-error").hide();
+						$("#message-success").fadeIn(200);
+					},
+					error: function () {
+						$("#message-success").hide();
+						$("#message-error").fadeIn(200);
+					}
+				});
+			});
+		});
+	</script>
+}

@@ -1,0 +1,7 @@
+﻿{
+  "GoogleRecaptchaSettings": {
+	 "IsEnabled": false,
+	 "SiteKey": "",
+	 "SecretKey": ""
+  }
+}

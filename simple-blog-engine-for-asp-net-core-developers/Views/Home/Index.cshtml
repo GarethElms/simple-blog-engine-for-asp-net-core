@@ -1,0 +1,30 @@
+﻿@model BlogPostsViewModel
+@inject Microsoft.Extensions.Options.IOptionsMonitor<SiteSettings> siteSettings
+@inject Microsoft.Extensions.Options.IOptionsMonitor<DisqusSettings> disqusSettings
+@{
+	ViewData["Title"] = "Home Page";
+	ViewData["Description"] = siteSettings.CurrentValue.Description;
+	ViewBag.DontShowComments = true;
+	ViewBag.DontShowAddThis = true;
+	ViewBag.PageId = "home";
+}
+
+@{if(Model.PageOfBlogPosts != null && Model.PageOfBlogPosts.Count > 0) {
+	foreach(var blogPost in Model.PageOfBlogPosts) {
+	<div class="blog-list-container">
+		@Html.Partial("~/Views/Blog/ViewBlogPost.cshtml", blogPost)
+		<hr />
+	</div>
+	}
+} else {
+	<p></p>
+}}
+
+@Html.Partial("_hook_pagingControlBefore")
+@Html.Partial("~/Views/Shared/_pagingControl.cshtml", Model)
+@Html.Partial("_hook_pagingControlAfter")
+
+@section Scripts {
+@if(disqusSettings.CurrentValue.IsEnabled) {
+<script id="dsq-count-scr" src="//@(disqusSettings.CurrentValue.ShortName).disqus.com/count.js" async></script>
+}}

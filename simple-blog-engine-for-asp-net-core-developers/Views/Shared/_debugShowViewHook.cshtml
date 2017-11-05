@@ -1,0 +1,9 @@
+﻿@model string
+
+@{
+	@inject Microsoft.Extensions.Options.IOptionsMonitor<SiteSettings> siteSettings
+}
+
+@if(siteSettings.CurrentValue.DebugMode.ShowViewHooks) {
+	<div class="view-hook">@Model</div>
+}
