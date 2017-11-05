@@ -24,7 +24,7 @@ You could knock this up yourself in an hour of course but the advantages of usin
   * Responsive design
   * Cross platform deployment
 
-This blog uses it and it's much faster now I've switched from Wordpress.
+[My blog](http://www.garethelms.org) uses it and it's much faster now I've switched from Wordpress.
 
 # Interested? How to get started
 
@@ -270,6 +270,8 @@ secretKey | Grab this from your Google Recaptcha backend eg; 1234j2th54th34t54ji
 
 ### hosting.json
 This is your standard ASP.NET Core hosting.json file. This is useful if you're deploying through a proxy server such as Apache on Ubuntu. Apache needs to know where your web site's service sits
+
+## Working with the settings
 
 The settings files are parsed into POCO objects. If you want to use the settings in your own views you can inject them like this :
 
