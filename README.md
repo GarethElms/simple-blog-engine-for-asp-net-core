@@ -65,6 +65,8 @@ I'll explain what all the settings mean at the end of this readme.
 
 Create a cshtml file in `\Views\_blogSource` and write your blog post content in HTML. Don't include the blog post title here (see step 3 below). You can name the cshtml file however you wish and use directories to organise them to your liking.
 
+Alternatively you can use an online HTML editor to write your post and then paste the HTML into the view. For example : https://html-online.com/editor/.
+
 Any images you need can be added to the `wwwroot\img` folder. If you do add images make sure to use the bootstrap class `img-fluid` otherwise they won't resize and may also exceed the container boundary.
 
 `<img class="img-fluid" src="...`
