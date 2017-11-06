@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Settings\Custom\" />
     <Folder Include="Views\Custom\" />
   </ItemGroup>
 
