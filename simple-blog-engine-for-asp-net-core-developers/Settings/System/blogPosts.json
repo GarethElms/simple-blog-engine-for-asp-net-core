@@ -5,6 +5,7 @@
 	 "published":true,
 	 "title":"First Blog Post",
 	 "description": "This is my first blog post.",
+	 "image": "~/img/firstBlogPostImage.png",
 	 "date":{
 		"year":"2017",
 		"month":"11",
@@ -19,6 +20,7 @@
 	 "published":true,
 	 "title":"Second Blog Post",
 	 "description": "This is my second blog post.",
+	 "image": "~/img/secondBlogPostImage.png",
 	 "date":{
 		"year":"2017",
 		"month":"11",
@@ -33,6 +35,7 @@
 	 "published":true,
 	 "title":"Third Blog Post",
 	 "description": "This is my third blog post.",
+	 "image": "~/img/thirdBlogPostImage.png",
 	 "date":{
 		"year":"2017",
 		"month":"11",
