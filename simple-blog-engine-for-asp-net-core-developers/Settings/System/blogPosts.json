@@ -14,7 +14,8 @@
 	 "author":"Author",
 	 "slug":"first-blog-post",
 	 "view":"firstBlogPost.cshtml",
-	 "tags":["blog", "first"]
+	 "tags":["blog", "first"],
+      	 "categories": [ "Blog"]
   }, {
 	 "published":true,
 	 "title":"Second Blog Post",
@@ -28,7 +29,8 @@
 	 "author":"Author",
 	 "slug":"second-blog-post",
 	 "view":"secondBlogPost.cshtml",
-	 "tags":["blog", "second"]
+	 "tags":["blog", "second"],
+      	 "categories": [ "Category2"]
   }, {
 	 "published":true,
 	 "title":"Third Blog Post",
@@ -42,6 +44,7 @@
 	 "author":"Author",
 	 "slug":"third-blog-post",
 	 "view":"thirdBlogPost.cshtml",
-	 "tags":["blog", "third"]
+	 "tags":["blog", "third"],
+      	 "categories": [ "Category1"]
   }]
 }
